@@ -1,9 +1,9 @@
 cask "murmuration" do
   arch arm: "arm64", intel: "x86_64"
 
-  version "0.1.0-preview.5"
-  sha256 arm:   "3ced0ef2bca6d982beea3a2f590d7ad216493cacb935a6771dbe0ac109cb2406",
-         intel: "7db63fc21302673f5966ae3c2706df0cfeb2ed15979701512c8a0777a014af92"
+  version "0.1.0-preview.11"
+  sha256 arm:   "929a58b169b3ed06cc57c655e15a8a7da5ff99216f78f27b9a0a786c98360173",
+         intel: "a1e75978a1fad374371fe586cc76a5085d30ca2350a0c1885a4944b986d2af06"
 
   url "https://github.com/forgeopslabs/murmuration-releases/releases/download/v#{version}/murmuration-#{version}-macos-#{arch}.zip"
   name "Murmuration"
