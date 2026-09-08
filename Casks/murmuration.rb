@@ -1,15 +1,13 @@
 cask "murmuration" do
-  arch arm: "arm64", intel: "x86_64"
+  version "0.1.0-preview.13"
+  sha256 "1b6ff416efe42dc663c00f1023f9df16fff2c24d9dd11305309525f993e03914"
 
-  version "0.1.0-preview.12"
-  sha256 arm:   "8aa86acd8fc99db75ad329f734df4e6e714eb62e904f2c4e2fdec1e57e812428",
-         intel: "a261c9f0d74c2fa76625314ad7b55e41f4a110a9a84da6441c9df6d875c90e41"
-
-  url "https://github.com/forgeopslabs/murmuration-releases/releases/download/v#{version}/murmuration-#{version}-macos-#{arch}.zip"
+  url "https://github.com/forgeopslabs/murmuration-releases/releases/download/v#{version}/murmuration-#{version}-macos-arm64.zip"
   name "Murmuration"
   desc "Observable, privacy-correct BitTorrent client with GUI, CLI, and TUI"
   homepage "https://github.com/forgeopslabs/murmuration-releases"
 
+  depends_on arch: :arm64
   depends_on macos: :big_sur
 
   app "Murmuration.app"
@@ -17,10 +15,13 @@ cask "murmuration" do
   binary "#{appdir}/Murmuration.app/Contents/Resources/bin/murmur-tui"
   binary "#{appdir}/Murmuration.app/Contents/Resources/bin/murmurd"
 
-  uninstall signal: [
-    ["TERM", "org.murmuration-bt.murmuration"],
-    ["TERM", "org.murmuration-bt.murmuration.murmurd"],
-  ]
+  uninstall script: {
+    executable: RbConfig.ruby,
+    args:       ["#{appdir}/Murmuration.app/Contents/Resources/uninstall.rb",
+                 "--app", "#{appdir}/Murmuration.app",
+                 "--homebrew-script", "#{HOMEBREW_LIBRARY_PATH}/brew.rb"],
+    sudo:       false,
+  }
 
   zap trash: [
     "~/Library/Application Support/Murmuration",
