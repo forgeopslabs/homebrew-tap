@@ -1,6 +1,6 @@
 cask "murmuration" do
-  version "0.1.0-preview.21"
-  sha256 "eaaed2957910ae55c578650ac39641fe495ab4fdac757d5a5890a7f1c2f6dfcb"
+  version "0.1.0-preview.22"
+  sha256 "13a27ccaaad9f0f3cca92509ead4bc7be29d27ccbe22261f9337cb103c4c90c4"
 
   url "https://github.com/forgeopslabs/murmuration-releases/releases/download/v#{version}/murmuration-#{version}-macos-arm64.zip"
   name "Murmuration"
